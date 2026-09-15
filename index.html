@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gracia KANAZA — Portfolio Cybersécurité</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,500;0,600;0,700;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #0f1720;
+    --bg-alt: #0c131a;
+    --panel: #16202b;
+    --panel-2: #182430;
+    --border: #2a3a48;
+    --border-soft: #223140;
+    --text: #e7e3d8;
+    --text-dim: #93a2ac;
+    --text-faint: #62727c;
+    --amber: #c99a4c;
+    --amber-soft: #7a6238;
+    --critique: #c1614c;
+    --eleve: #cf9750;
+    --moyen: #c7b558;
+    --faible: #5f9678;
+  }
+
+  *{ box-sizing: border-box; }
+
+  html{ scroll-behavior: smooth; }
+
+  body{
+    margin:0;
+    background: var(--bg);
+    background-image:
+      linear-gradient(180deg, var(--bg-alt) 0%, var(--bg) 320px);
+    color: var(--text);
+    font-family: 'Spectral', Georgia, serif;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .wrap{
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 0 28px 120px;
+  }
+
+  /* ---------- HEADER / COVER ---------- */
+  header.cover{
+    padding: 72px 0 40px;
+    border-bottom: 1px solid var(--border-soft);
+  }
+
+  .file-tag{
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.06em;
+    color: var(--amber);
+    border: 1px solid var(--amber-soft);
+    background: rgba(201,154,76,0.08);
+    padding: 5px 10px;
+    border-radius: 3px;
+    display: inline-block;
+    margin-bottom: 28px;
+  }
+
+  h1.name{
+    font-size: 44px;
+    font-weight: 600;
+    margin: 0 0 6px;
+    letter-spacing: 0.005em;
+    color: #f3f0e7;
+  }
+
+  p.role{
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 14.5px;
+    color: var(--text-dim);
+    margin: 0 0 26px;
+  }
+
+  p.mission{
+    font-size: 18px;
+    line-height: 1.7;
+    color: var(--text);
+    max-width: 620px;
+    margin: 0 0 30px;
+  }
+
+  .contact-bar{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 18px 28px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 13px;
+    color: var(--text-dim);
+  }
+  .contact-bar a{
+    color: var(--text-dim);
+    text-decoration: none;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 2px;
+    transition: color .15s, border-color .15s;
+  }
+  .contact-bar a:hover{ color: var(--amber); border-color: var(--amber-soft); }
+
+  /* ---------- SECTION HEADINGS ---------- */
+  section{ padding: 56px 0; border-bottom: 1px solid var(--border-soft); }
+  section:last-of-type{ border-bottom: none; }
+
+  h2.section-title{
+    font-size: 13px;
+    font-family: 'IBM Plex Mono', monospace;
+    color: var(--text-faint);
+    letter-spacing: 0.04em;
+    margin: 0 0 28px;
+    padding-bottom: 14px;
+    border-bottom: 1px dashed var(--border);
+  }
+
+  /* ---------- PROFIL ---------- */
+  .profil p{ color: var(--text-dim); font-size: 16px; max-width: 620px; }
+  .profil p + p{ margin-top: 14px; }
+
+  /* ---------- COMPETENCES ---------- */
+  .skill-group{ margin-bottom: 22px; }
+  .skill-group:last-child{ margin-bottom: 0; }
+  .skill-group h3{
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12.5px;
+    font-weight: 500;
+    color: var(--amber);
+    margin: 0 0 12px;
+  }
+  .skill-tags{ display: flex; flex-wrap: wrap; gap: 8px; }
+  .skill-tags span{
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12.5px;
+    color: var(--text-dim);
+    border: 1px solid var(--border);
+    padding: 5px 10px;
+    border-radius: 3px;
+    background: var(--panel);
+  }
+
+  /* ---------- DOSSIERS / PROJETS ---------- */
+  .dossier{
+    border: 1px solid var(--border);
+    background: var(--panel);
+    border-radius: 4px;
+    margin-bottom: 18px;
+    overflow: hidden;
+  }
+  .dossier:last-child{ margin-bottom: 0; }
+
+  .dossier summary{
+    list-style: none;
+    cursor: pointer;
+    padding: 20px 22px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 16px;
+  }
+  .dossier summary::-webkit-details-marker{ display:none; }
+
+  .dossier summary .summary-left{ flex: 1; min-width: 0; }
+
+  .classif{
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10.5px;
+    letter-spacing: 0.05em;
+    padding: 3px 8px;
+    border-radius: 2px;
+    display: inline-block;
+    margin-bottom: 10px;
+  }
+  .classif.critique{ color: var(--critique); border: 1px solid var(--critique); }
+  .classif.eleve{ color: var(--eleve); border: 1px solid var(--eleve); }
+  .classif.moyen{ color: var(--moyen); border: 1px solid var(--moyen); }
+
+  .dossier h3.title{
+    font-size: 21px;
+    font-weight: 600;
+    color: #f3f0e7;
+    margin: 0 0 6px;
+  }
+
+  .dossier .subtitle{
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12.5px;
+    color: var(--text-faint);
+  }
+
+  .chevron{
+    font-family: 'IBM Plex Mono', monospace;
+    color: var(--text-faint);
+    font-size: 13px;
+    margin-top: 4px;
+    flex-shrink: 0;
+    transition: transform .2s ease;
+  }
+  details[open] .chevron{ transform: rotate(90deg); }
+
+  .dossier-body{
+    padding: 0 22px 26px;
+    border-top: 1px solid var(--border-soft);
+    margin-top: 4px;
+    padding-top: 20px;
+  }
+
+  .dossier-body p.desc{ color: var(--text-dim); font-size: 15.5px; margin: 0 0 18px; }
+
+  .kv-list{ margin: 0 0 18px; padding: 0; list-style: none; }
+  .kv-list li{
+    display: flex;
+    gap: 14px;
+    font-size: 14.5px;
+    padding: 7px 0;
+    border-bottom: 1px solid var(--border-soft);
+  }
+  .kv-list li:last-child{ border-bottom: none; }
+  .kv-list .k{
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11.5px;
+    color: var(--text-faint);
+    width: 118px;
+    flex-shrink: 0;
+    padding-top: 2px;
+  }
+  .kv-list .v{ color: var(--text-dim); }
+  .kv-list .v strong{ color: var(--text); font-weight: 500; }
+
+  .stack-tags{ display: flex; flex-wrap: wrap; gap: 7px; margin-bottom: 18px; }
+  .stack-tags span{
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11.5px;
+    color: var(--text-dim);
+    border: 1px solid var(--border);
+    padding: 4px 9px;
+    border-radius: 3px;
+  }
+
+  .repo-link{
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 13px;
+    color: var(--amber);
+    text-decoration: none;
+    border-bottom: 1px solid var(--amber-soft);
+    padding-bottom: 2px;
+  }
+  .repo-link:hover{ color: #ddb56f; }
+
+  .no-repo{
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12.5px;
+    color: var(--text-faint);
+    font-style: normal;
+  }
+
+  /* ---------- FORMATION ---------- */
+  .formation-item{ display:flex; gap: 20px; }
+  .formation-item .years{
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12.5px;
+    color: var(--text-faint);
+    width: 100px;
+    flex-shrink: 0;
+    padding-top: 3px;
+  }
+  .formation-item h3{ font-size: 17px; font-weight: 600; margin: 0 0 4px; color: #f3f0e7; }
+  .formation-item p{ color: var(--text-dim); font-size: 14.5px; margin: 0; }
+
+  /* ---------- FOOTER ---------- */
+  footer{
+    padding: 44px 0 0;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12px;
+    color: var(--text-faint);
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  @media (max-width: 600px){
+    .wrap{ padding: 0 18px 90px; }
+    header.cover{ padding: 48px 0 32px; }
+    h1.name{ font-size: 32px; }
+    p.mission{ font-size: 16.5px; }
+    .kv-list li{ flex-direction: column; gap: 3px; }
+    .kv-list .k{ width: auto; }
+    .formation-item{ flex-direction: column; gap: 4px; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="cover">
+    <span class="file-tag">DOSSIER PROFESSIONNEL — ACCÈS PUBLIC</span>
+    <h1 class="name">KANAZA Biguèdinam Gracia</h1>
+    <p class="role">Étudiante en Licence Professionnelle Sécurité Informatique &amp; Cybersécurité — Université de Kara, Togo</p>
+    <p class="mission">Étudiante en cybersécurité, je m'intéresse à la détection d'intrusions, à la sécurité des réseaux et à l'audit de bases de données.</p>
+    <div class="contact-bar">
+      <a href="mailto:erikahknz@gmail.com">erikahknz@gmail.com</a>
+      <a href="tel:+22899977121">+228 99 97 71 21</a>
+      <a href="https://github.com/graciaKANAZA" target="_blank" rel="noopener">github.com/graciaKANAZA</a>
+    </div>
+  </header>
+
+  <section class="profil">
+    <h2 class="section-title">PROFIL</h2>
+    <p>Je suis en 3e année de Licence en Sécurité Informatique et Cybersécurité à l'Université de Kara. J'aime comprendre comment un système peut être attaqué pour mieux savoir comment le protéger, que ce soit une application web, un réseau ou une base de données.</p>
+    <p>Les projets présentés ici sont ceux réalisés durant ma formation. Pour chacun, j'ai essayé d'aller jusqu'au bout : simuler de vraies attaques, tester si les protections fonctionnent réellement, pas seulement sur le papier.</p>
+  </section>
+
+  <section class="competences">
+    <h2 class="section-title">COMPÉTENCES</h2>
+
+    <div class="skill-group">
+      <h3>Sécurité &amp; supervision</h3>
+      <div class="skill-tags">
+        <span>Détection d'intrusion</span>
+        <span>SIEM (Wazuh)</span>
+        <span>Journalisation &amp; corrélation de logs</span>
+        <span>Gestion des identités et des accès</span>
+        <span>Certificats SSL/TLS</span>
+        <span>Audit de vulnérabilités</span>
+        <span>Tests d'intrusion</span>
+      </div>
+    </div>
+
+    <div class="skill-group">
+      <h3>Réseaux &amp; systèmes</h3>
+      <div class="skill-tags">
+        <span>802.1X / RADIUS</span>
+        <span>TCP/IP, DNS, VPN, pare-feu</span>
+        <span>Administration Linux</span>
+        <span>Administration Windows</span>
+      </div>
+    </div>
+
+    <div class="skill-group">
+      <h3>Développement &amp; données</h3>
+      <div class="skill-tags">
+        <span>Python (Flask)</span>
+        <span>PostgreSQL</span>
+        <span>Bash</span>
+        <span>Docker</span>
+        <span>WebSocket</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="projets">
+    <h2 class="section-title">PROJETS</h2>
+
+    <details class="dossier" open>
+      <summary>
+        <div class="summary-left">
+          <span class="classif critique">DÉTECTION — 5 TYPES D'ATTAQUES</span>
+          <h3 class="title">Doctor Secure — Le Rika's Hospital</h3>
+          <div class="subtitle">Application événementielle de sécurité · Avril 2026</div>
+        </div>
+        <span class="chevron">▸</span>
+      </summary>
+      <div class="dossier-body">
+        <p class="desc">Application web Flask connectée à PostgreSQL pour un établissement médical fictif, construite autour d'un bus d'événements (EventBus) qui intercepte, journalise et alerte en temps réel sur les tentatives d'accès non autorisé aux dossiers médicaux.</p>
+        <ul class="kv-list">
+          <li><span class="k">Détection</span><span class="v"><strong>5 types d'attaques</strong> : brute force, injection SQL, accès admin refusé, exfiltration de données, énumération de comptes</span></li>
+          <li><span class="k">Rôles</span><span class="v">4 rôles à droits différenciés — patient, docteur, analyste sécurité, administrateur</span></li>
+          <li><span class="k">Alertes</span><span class="v">Notifications Telegram en temps réel, classées par sévérité (faible / moyen / élevé / critique)</span></li>
+          <li><span class="k">Rapports</span><span class="v">Génération de rapports PDF d'incidents filtrables par sévérité et période (ReportLab)</span></li>
+        </ul>
+        <div class="stack-tags">
+          <span>Flask</span><span>Flask-SocketIO</span><span>PostgreSQL</span><span>SQLAlchemy</span><span>WebSocket</span><span>API Telegram</span><span>ReportLab</span>
+        </div>
+        <a class="repo-link" href="https://github.com/graciaKANAZA/doctor_secure" target="_blank" rel="noopener">github.com/graciaKANAZA/doctor_secure</a>
+      </div>
+    </details>
+
+    <details class="dossier">
+      <summary>
+        <div class="summary-left">
+          <span class="classif eleve">AUTHENTIFICATION RÉSEAU</span>
+          <h3 class="title">LAB 5 — 802.1X / RADIUS &amp; SIEM Wazuh</h3>
+          <div class="subtitle">Laboratoire de sécurité réseau · Avril 2026</div>
+        </div>
+        <span class="chevron">▸</span>
+      </summary>
+      <div class="dossier-body">
+        <p class="desc">Déploiement d'une authentification 802.1X sur infrastructure virtualisée à trois machines, remplaçant un mot de passe Wi-Fi partagé par une identification individuelle via un serveur RADIUS, avec supervision centralisée des connexions.</p>
+        <ul class="kv-list">
+          <li><span class="k">Infrastructure</span><span class="v">3 VMs — FreeRADIUS + hostapd (serveur), wpa_supplicant (client), Kali (tests et simulation)</span></li>
+          <li><span class="k">Protocoles</span><span class="v">802.1X, EAP (PEAP + MSCHAPv2), RADIUS sur UDP 1812</span></li>
+          <li><span class="k">Supervision</span><span class="v">SIEM Wazuh collectant les logs FreeRADIUS et générant des alertes sur tentatives anormales</span></li>
+          <li><span class="k">Validation</span><span class="v">Authentifications individuelles testées (succès / échec) et scénario de brute force simulé</span></li>
+        </ul>
+        <div class="stack-tags">
+          <span>FreeRADIUS</span><span>hostapd</span><span>wpa_supplicant</span><span>Wazuh</span><span>Kali Linux</span>
+        </div>
+        <span class="no-repo">Dépôt non publié — rapport et configuration disponibles sur demande</span>
+      </div>
+    </details>
+
+    <details class="dossier">
+      <summary>
+        <div class="summary-left">
+          <span class="classif critique">AUDIT — 11 FAILLES IDENTIFIÉES</span>
+          <h3 class="title">Audit de sécurité PostgreSQL — Projet UK 2026</h3>
+          <div class="subtitle">Audit &amp; cloisonnement des privilèges · Juillet 2026</div>
+        </div>
+        <span class="chevron">▸</span>
+      </summary>
+      <div class="dossier-body">
+        <p class="desc">Audit de deux applications NestJS/TypeORM partageant une même base PostgreSQL via un compte superutilisateur unique. Remplacement par deux comptes dédiés à privilèges cloisonnés, et identification des failles de contrôle d'accès dans le code des deux applications.</p>
+        <ul class="kv-list">
+          <li><span class="k">Failles trouvées</span><span class="v"><strong>11 vulnérabilités</strong> : contrôles de rôle absents ou inversés, secret JWT codé en dur, mots de passe stockés en clair, port PostgreSQL exposé, schéma non figé</span></li>
+          <li><span class="k">Cloisonnement</span><span class="v">Matrice de droits par table selon le principe du moindre privilège, aucun compte SUPERUSER</span></li>
+          <li><span class="k">Défense en profondeur</span><span class="v">Les GRANT PostgreSQL bloquent l'exploitation des failles applicatives même non corrigées côté code</span></li>
+          <li><span class="k">Tests</span><span class="v">Script automatisé de vérification des privilèges — 10/10 tests réussis sur environnement Docker réel</span></li>
+        </ul>
+        <div class="stack-tags">
+          <span>PostgreSQL</span><span>NestJS</span><span>TypeORM</span><span>Docker</span><span>bcrypt</span><span>JWT</span>
+        </div>
+        <a class="repo-link" href="https://github.com/graciaKANAZA/projet-securite-bd-uk-2026" target="_blank" rel="noopener">github.com/graciaKANAZA/projet-securite-bd-uk-2026</a>
+      </div>
+    </details>
+
+  </section>
+
+  <section class="formation">
+    <h2 class="section-title">FORMATION</h2>
+    <div class="formation-item">
+      <span class="years">2025 — 2026</span>
+      <div>
+        <h3>Licence Professionnelle en Sécurité Informatique et Cybersécurité</h3>
+        <p>Université de Kara (FAST-LPSIC), Togo</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <span>KANAZA Biguèdinam Gracia</span>
+    <span>Kara, Togo</span>
+  </footer>
+
+</div>
+</body>
+</html>
