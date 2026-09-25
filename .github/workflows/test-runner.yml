@@ -1,0 +1,15 @@
+name: Test Runner Self-Hosted
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  test-job:
+    runs-on: self-hosted
+    steps:
+      - name: Vérification simple
+        run: |
+          echo "Le runner self-hosted fonctionne correctement."
+          echo "Test d'accès à un service local :"
+          curl -s http://127.0.0.1:8000 || echo "Aucun service local détecté sur le port 8000 (normal si la passerelle n'est pas lancée)."
